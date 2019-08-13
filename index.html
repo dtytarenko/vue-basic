@@ -8,25 +8,18 @@
 </head>
 <body>
     <div id="app">
-        <input type="text" v-on:input="changeName">
-        <h1>String: {{ name }}</h1>
-        <h1>Number: {{ sayHello() }}</h1>
+        <h1>
+            <a v-bind:href="url">Google </a> 
+        </h1>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 
     <script>
-
         new Vue({
             el: '#app',
             data: {
-                name: 'Vue!',
-                number: 100
-            },
-            methods: {
-                sayHello: function(){
-                    return 'I am function'
-                }
+                url: 'https://google.com'
             }
         })
 
