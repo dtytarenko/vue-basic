@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue JS</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-on:input="changeName">
+        <h1>String: {{ name }}</h1>
+        <h1>Number: {{ sayHello() }}</h1>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+    <script>
+
+        new Vue({
+            el: '#app',
+            data: {
+                name: 'Vue!',
+                number: 100
+            },
+            methods: {
+                sayHello: function(){
+                    return 'I am function'
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>
