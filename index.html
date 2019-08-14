@@ -9,11 +9,18 @@
 <body>
     <div id="app">
 
-        <h2> {{ title }} = {{ counter }} </h2>
-        <button v-on:click="riseCounter(5, 'change on 5', $event)">Increase step 5</button>
-        <button v-on:click="riseCounter(10, 'change on 10', $event)">Increase step 10</button>
+        <a href="http://google.com" target="_blank" v-on:click="clickOnGoogle">Google</a>
+       
+        <!-- without methods -->
 
-    
+        <a href="http://google.com" target="_blank" v-on:click.prevent="">Google</a>
+
+        <h2 v-on:mousemove="handleMouseMove">
+            x: {{ x }} \ Y: {{ y }}
+
+            <!-- модификатор останавливает отловку событий -->
+            <span v-on:mousemove.stop> Disable change</span>
+        </h2>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -22,19 +29,16 @@
         new Vue({
             el: '#app',
             data: {
-                counter: 0,
-                title: 'Counter'
+                x: 0,
+                y: 0
             },
             methods: {
-                riseCounter: function(num, str, event){
-                    this.counter += num
-                    this.title = str
-                    
-                    if (num === 5){
-                        event.target.style.color = 'blue'
-                    } else if (num === 10) {
-                        event.target.style.color = 'red'
-                    }
+                clickOnGoogle: function(event){
+                    event.preventDefault()
+                },
+                handleMouseMove: function (event) {
+                    this.x = event.clientX
+                    this.y = event.clientY
                 }
             }
         })
