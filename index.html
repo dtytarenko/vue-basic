@@ -21,6 +21,16 @@
             <!-- модификатор останавливает отловку событий -->
             <span v-on:mousemove.stop> Disable change</span>
         </h2>
+
+        <hr>
+
+        <!-- модификатор событий клавиатуры -->
+        <input type="text" v-on:keyup="alertValue">
+
+        <!-- пример модификатора вью -->
+
+        <input type="text" v-on:keyup.enter="alertValue">
+        <input type="text" v-on:keyup.space="alertValue">
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -39,6 +49,11 @@
                 handleMouseMove: function (event) {
                     this.x = event.clientX
                     this.y = event.clientY
+                },
+                alertValue: function (event){
+                    // if (event.keyCode === 13){
+                        alert(event.target.value)
+                    // }                    
                 }
             }
         })
