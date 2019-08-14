@@ -8,29 +8,20 @@
 </head>
 <body>
     <div id="app">
-
-        <a href="http://google.com" target="_blank" v-on:click="clickOnGoogle">Google</a>
-       
-        <!-- without methods -->
-
-        <a href="http://google.com" target="_blank" v-on:click.prevent="">Google</a>
-
-        <h2 v-on:mousemove="handleMouseMove">
-            x: {{ x }} \ Y: {{ y }}
-
-            <!-- модификатор останавливает отловку событий -->
-            <span v-on:mousemove.stop> Disable change</span>
+        <h2>
+            <a :href="url">Google</a>
         </h2>
 
-        <hr>
+        <!-- удаление v-bind -->
 
-        <!-- модификатор событий клавиатуры -->
-        <input type="text" v-on:keyup="alertValue">
+        <h2>
+            Counter: {{ counter }}
+        </h2>
 
-        <!-- пример модификатора вью -->
+        <button v-on:click="counter++">Rise</button>
+        <button @click="counter++">Rise</button>
 
-        <input type="text" v-on:keyup.enter="alertValue">
-        <input type="text" v-on:keyup.space="alertValue">
+        <!-- замена v-on:click на @click -->
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -39,22 +30,10 @@
         new Vue({
             el: '#app',
             data: {
-                x: 0,
-                y: 0
+                counter: 0,
+                url: 'http://google.com'
             },
             methods: {
-                clickOnGoogle: function(event){
-                    event.preventDefault()
-                },
-                handleMouseMove: function (event) {
-                    this.x = event.clientX
-                    this.y = event.clientY
-                },
-                alertValue: function (event){
-                    // if (event.keyCode === 13){
-                        alert(event.target.value)
-                    // }                    
-                }
             }
         })
 
