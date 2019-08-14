@@ -8,20 +8,15 @@
 </head>
 <body>
     <div id="app">
-        <h2>
-            <a :href="url">Google</a>
-        </h2>
+        <input type="text" @input="inputValue = $event.target.value" :value = inputValue>
 
-        <!-- удаление v-bind -->
+        <!-- биндинг через  модель -->
+        <input type="text" v-model="inputValue">
 
-        <h2>
-            Counter: {{ counter }}
-        </h2>
+        <!-- изменения происходят после ухода фокуса с инпута -->
+        <input type="text" v-model.lazy="inputValue">
 
-        <button v-on:click="counter++">Rise</button>
-        <button @click="counter++">Rise</button>
-
-        <!-- замена v-on:click на @click -->
+        <h2> {{ inputValue }} </h2>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -30,10 +25,7 @@
         new Vue({
             el: '#app',
             data: {
-                counter: 0,
-                url: 'http://google.com'
-            },
-            methods: {
+                inputValue: 'initial value'
             }
         })
 
